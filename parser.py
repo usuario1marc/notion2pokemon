@@ -89,7 +89,7 @@ def parse_moves(root, output_filepath):
         
         # 2. Structure for Godot
         moves_list_by_id[m_id] = [
-            catala, m_id, tipus, categoria, objectiu, potencia, precisio, pp, 
+            catala, tipus, categoria, objectiu, potencia, precisio, pp, 
             prioritat, probabilitat, efecte, propietats
         ]
 
