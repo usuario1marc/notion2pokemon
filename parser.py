@@ -3,7 +3,7 @@ import json
 import os
 
 export_filepath = r"C:\Users\madro\OneDrive\Escritorio\POKEMON MALLORCA\notion_exports\2026_06_02"
-output_filepath = r"C:\Users\madro\OneDrive\Escritorio\POKEMON MALLORCA\notion parser\output"
+output_filepath = r"C:\Users\madro\OneDrive\Escritorio\POKEMON MALLORCA\notion2pokemon\output"
 
 # Helper function to safely parse integers
 def parse_int(val):
@@ -77,26 +77,26 @@ def parse_moves(root, output_filepath):
             "id": m_id,
             "tipus": tipus,
             "categoria": categoria,
-            "objectiu": objectiu,
             "potencia": potencia,
             "precisio": precisio,
             "pp": pp,
             "prioritat": prioritat,
+            "propietats": propietats,
             "probabilitat_efecte": probabilitat,
             "efecte": efecte,
-            "propietats": propietats # Represented as a standard list [0, 1, 2, 4] for JSON standard
+            "objectiu": objectiu
         }
         
         # 2. Structure for Godot
         moves_list_by_id[m_id] = [
-            catala, tipus, categoria, objectiu, potencia, precisio, pp, 
-            prioritat, probabilitat, efecte, propietats
+            catala, tipus, categoria, potencia, precisio, pp, prioritat, propietats, probabilitat, efecte, objectiu
         ]
 
     # Save format 1: Tabbed JSON File 
     dict_path = os.path.join(output_filepath, 'moves_dict.json')
+    moves_dict_sorted = {k: moves_dict[k] for k in sorted(moves_dict.keys())}
     with open(dict_path, 'w', encoding='utf-8') as f:
-        json.dump(moves_dict, f, ensure_ascii=False, indent=4)
+        json.dump(moves_dict_sorted, f, ensure_ascii=False, indent=4)
 
     # Save format 2: Godot Array where index == ID
     # We create an array of size (max_id + 1) filled with empty arrays `[]`
@@ -106,7 +106,7 @@ def parse_moves(root, output_filepath):
 
     godot_path = os.path.join(output_filepath, 'moves_godot.json')
     with open(godot_path, 'w', encoding='utf-8') as f:
-        json.dump(godot_array, f, ensure_ascii=False, indent=4)
+        json.dump(godot_array, f, ensure_ascii=False)
 
     print(f"Exported successfully to:\n{dict_path}\n{godot_path}")
 

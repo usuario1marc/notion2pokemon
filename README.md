@@ -9,17 +9,17 @@ L'ID d'un moviment correspon directament al seu índex dins de `all_moves_array`
 Cada `move_array` conté els següents elements en aquest ordre:
 
     move_array_ID = [
-        #0  nom en català (string),
-        #1  tipus (int),
-        #2  categoria (int),
-        #3  objectiu (int),
-        #4  potencia (int),
-        #5  precisio (int),
-        #6  pp (int),
-        #7  prioritat (int),
-        #8  probabilitat_efecte (int),
-        #9  efecte (int),
-        #10 propietats = [...] (array de int)
+        #1  nom en català (string)
+        #2  tipus (int)
+        #3  categoria (int)
+        #4  potencia (int)
+        #5  precisio (int)
+        #6  pp (int)
+        #7  prioritat (int)
+        #8  propietats = [...] (array d'int)
+        #9  probabilitat_efecte (int)
+        #10 efecte (int)
+        #11 objectiu (int)
     ]
 
 Tingues en compte que tant la categoria com l'objectiu s'han convertit a valors enters mitjançant la següent equivalència:
