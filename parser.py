@@ -14,7 +14,7 @@ def parse_int(val):
 def parse_list(val):
     if pd.isna(val): return []
     if isinstance(val, str):
-        return [int(x.strip()) for x in val.split(',') if x.strip().isdigit()]
+        return sorted([int(x.strip()) for x in val.split(',') if x.strip().isdigit()])
     return []
 
 def parse_moves(root, output_filepath):
